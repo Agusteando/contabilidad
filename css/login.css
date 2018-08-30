@@ -1,0 +1,216 @@
+/* ///////////////////////////////////////////
+
+	FONT FACE	
+
+/////////////////////////////////////////// */
+
+@font-face {
+    font-family: 'rond';
+    src: url('rond.eot');
+    src: url('rond.eot?#iefix') format('embedded-opentype'),
+         url('rond.woff') format('woff'),
+         url('rond.ttf') format('truetype'),
+         url('rond.svg#RondanaRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* ///////////////////////////////////////////
+
+	TAGS
+
+/////////////////////////////////////////// */
+
+body {
+	margin: 0;
+	font: 13px Helvetica, Arial, sans-serif;
+	color: #666;
+	line-height: 20px;
+	background-color: #E6E6E6;
+}
+
+
+a:link, a:visited, a:active {
+	color: #000;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: "rond", Helvetica, sans-serif;
+	font-weight: normal;
+	margin: 0px;
+	padding: 0px;
+	color: #E67D12;
+}
+
+h1 {
+	font-size: 30px;
+	line-height: 30px;
+}
+
+h2 {
+	font-size: 25px;
+	margin-bottom: 10px;
+}
+
+form, ul, p {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	border: none;
+}
+
+p {
+	font-size: 14px;
+}
+
+
+/* ///////////////////////////////////////////
+
+	GENERALES
+
+/////////////////////////////////////////// */
+
+.clear {
+	clear: both;
+}
+
+.row {
+	display: block;
+	margin-bottom: 20px;
+	overflow: auto;
+}
+
+.row label, label {
+	display: block;
+	margin-bottom: 3px;
+}
+
+.row > div {
+	display: inline-block;
+	float: left;
+	overflow: auto;
+	margin-right: 10px;
+}
+
+.msgError {
+	color: #f00;
+	font-weight: bold;
+	margin: 10px 0;
+}
+
+
+
+
+/* ///////////////////////////////////////////
+
+	TABLAS
+
+/////////////////////////////////////////// */
+
+table {
+	width: 920px;
+	border-top: 1px solid #999;
+}
+
+td, th {
+	height: 45px;
+	border-bottom: 1px solid #999;
+	vertical-align: middle;
+	padding: 0 10px;
+	white-space: nowrap;
+}
+
+td.spacer {
+	width: 100%;
+}
+
+
+
+/* ///////////////////////////////////////////
+
+	LOGIN
+
+/////////////////////////////////////////// */
+
+#formLogin {
+	display: none;
+	width: 450px;
+	background-color: #fff;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	background-image: url(../css/headerLogin.png);
+        background-size: 450px 118px;
+        background-repeat: no-repeat;
+	position: relative;
+	overflow: auto;
+}
+
+#formLogin .wrap {
+	margin: 20px;
+	position: relative;
+}
+
+#formLogin .btnAcceder {
+	width: 180px;
+	height: 89px;
+	float: right;
+	background-color: #ddd;
+	margin-top: 21px;
+	cursor: pointer;
+	background-image: url(../css/btnAcceder.jpg);
+	border: 0;
+	padding-left: 50px;
+	color: #666;
+	font-size: 18px;
+}
+
+#formLogin .header {
+	height: 100px;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+#formLogin .header h1 {
+	color: #fff;
+	position: absolute;
+	top: 0px;
+	left: 180px;
+	line-height: 30px;
+	font-size: 25px;	
+}
+
+#formLogin .header h2 {
+	color: #fff;
+	position: absolute;
+	top: 65px;
+	left: 180px;
+	font-size: 18px;	
+}
+
+#user {
+	margin-bottom: 10px;
+}
+
+.user, .pass {
+	width: 200px;
+	height: 20px;
+	font-size: 15px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+}
+
+#formLogin .info {
+	margin-top: 20px;
+	padding-bottom: 10px;
+}
+.logo {
+font-size: 40px;
+}

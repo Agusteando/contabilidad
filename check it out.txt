@@ -1,0 +1,10 @@
+
+
+   $.ajax({
+      url: "request.php",
+      method: "POST",
+      data: { id: id },
+      success: function () {
+      $('#info').text('Ajaxd');
+      });
+

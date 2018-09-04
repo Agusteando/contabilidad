@@ -174,6 +174,162 @@ h2 {
   font-family: "rond", Helvetica, sans-serif;
   color: black;  
 }
-.cal {
-	float: right;
+.Masculino {
+background-image: url("boy.png");
+background-repeat: no-repeat;
+background-position: center bottom;
+background-size: contain;
+height: 90px;
+overflow: hidden;
+}
+.Femenino {
+background-image: url("girl.png");
+background-repeat: no-repeat;
+background-position: center bottom;
+background-size: contain;
+height: 90px;
+overflow: hidden;
+}
+.ss {
+	max-width: 200px;
+	min-width: 200px;
+	font-size: 18px;
+	margin: 10px;
+	font-family: 'Open Sans Condensed', sans-serif;
+	float: left;
+	cursor: pointer;
+}
+.nameLabel {
+
+}
+#wrapper {
+  padding-left: 250px;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper {
+  margin-left: -250px;
+  left: 250px;
+  width: 250px;
+  background: #CCCCCC;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+}
+
+#page-content-wrapper {
+  width: 100%;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width:767px) {
+  #wrapper {
+    padding-left: 0;
+  }
+  #sidebar-wrapper {
+    left: 0;
+  }
+  #wrapper.active {
+    position: relative;
+    left: 250px;
+  }
+  #wrapper.active #sidebar-wrapper {
+    left: 250px;
+    width: 250px;
+    transition: all 0.4s ease 0s;
+  }
+}
+.marco {
+background-image: url("marco.png");
+background-repeat: no-repeat;
+background-position: center bottom;
+background-size: contain;
+	max-width: 200px;
+	min-width: 200px;
+	font-size: 18px;
+	margin: 10px;
+	padding-bottom: 105px;
+	font-family: 'Open Sans Condensed', sans-serif;
+	float: left;
+	cursor: pointer;
+}
+.bigBox {
+    display: block;
+    position: relative;
+    margin-bottom: 12px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	max-width: 200px;
+	min-width: 200px;
+	height: 90px;
+
+	margin: 25px;
+	font-family: 'Open Sans Condensed', sans-serif;
+	float: left;
+	cursor: pointer;
+}
+
+/* Hide the browser's default checkbox */
+.bigBox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+position: relative;
+    top: 0;
+    left: 0;
+    background-color: #eee;
+	height: 90px;
+}
+
+/* On mouse-over, add a grey background color */
+.bigBox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.bigBox input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.bigBox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.bigBox .checkmark:after {
+    right: 25px;
+    top: -5px;
+    width: 37px;
+    height: 90px;
+    border: solid white;
+    border-width: 0 12px 12px 0;
+	border-radius: 10px;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+	
 }

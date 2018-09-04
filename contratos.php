@@ -1,14 +1,14 @@
 <?php
 
-var $apellidoM = $_POST["apellido materno"];
-var $apellidoP = $_POST["apellido paterno"];
-var $birth = $_POST["fecha de nacimiento"];
-var $grado = $_POST["grado"];
-var $genero = $_POST["género"];
-var $nombres = $_POST["nombres"];
-var $plantel = $_POST["plantel"];
-var $servicio = $_POST["servicio que contrata"];
-var $telefono = $_POST["teléfono"];
+ $apellidoM = $_POST["apellidomaterno"];
+ $apellidoP = $_POST["apellidopaterno"];
+ $birth = $_POST["birth"];
+ $grado = $_POST["grado"];
+ $genero = $_POST["genero"];
+ $nombres = $_POST["nombres"];
+ $plantel = $_POST["plantel"];
+ $servicio = $_POST["servicioquecontrata"];
+ $telefono = $_POST["telefono"];
 
 $servername = "localhost";
 $username = "root";
@@ -23,10 +23,14 @@ if ($conn->connect_error) {
 } 
 
 $sql = "INSERT INTO contratos (apellidoPaterno, apellidoMaterno, birth, grado, genero, nombres, plantel, servicio, telefono)
-VALUES ($apellidoM, $apellidoM, $birth $grado, $genero, $nombres, $plantel, $servicio, $telefono)";
+VALUES ('$apellidoP', '$apellidoM', '$birth', '$grado', '$genero', '$nombres', '$plantel', '$servicio', '$telefono')";
 
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
 
-$result = $conn->query($sql);
-
+$conn->close();
 
 ?>

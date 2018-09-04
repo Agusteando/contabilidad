@@ -37,22 +37,37 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	<li><a href="logout.php" class="btn btn-secondary" style="float: right;">Cerrar sesión</a></li>
 	<li>Loggeado como <span class="glyphicon glyphicon-user"></span><b><?php echo htmlspecialchars($_SESSION["username"]); ?> </b></li>
     </ul>
-	<h2 style="float: right; margin-right: 20px";></h2>
+
 	
 <div id="container">
+
 <form id="selectionScreen" action="" method="POST">
 <table id="categorias">
-<input type="text" name="plantel" value="<?php if (isset($_GET['plantel'])) { echo $_GET['plantel']; } else { header("location: index.php"); exit; } ?>" hidden>
+<input id="plantel" type="text" name="plantel" value="<?php if (isset($_GET['plantel'])) { echo $_GET['plantel']; } else { header("location: index.php"); exit; } ?>" hidden>
 <input id="servicio" type="text" name="servicio" hidden>
 </table>
 </form>
 </div>
 
 
-<div id="containerTwo" style="display:none"><div id="contents" style="display: inline-block">
+<div id="containerTwo" style="display:none">
 
-
-<form id="formContrato" method="get" style="display: none">
+<div id="wrapper">
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand"><span id="add" style="font-size: 40px; width: 100%;" class="glyphicon glyphicon-plus-sign"></span><a href="#" id="addHover">Nuevo contrato</a></li>
+    </ul>
+  </div>
+  <div id="page-content-wrapper">
+    <div class="page-content">
+      <div class="container">
+	   <div class="row">
+	   	<h2 style=""></h2>
+	   </div>
+        <div class="row">
+		
+          <div class="col-md-12">
+<form id="formContrato" method="get" style="display: none; margin-left: auto;margin-right: auto; width: 75%;">
 
 <button id="export-btn" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>GUARDAR</button>
 <div id="table" class="table-editable custom1">
@@ -62,10 +77,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <th>apellidopaterno</th>
         <th>apellidomaterno</th>
         <th>nombres</th>
-        <th>género</th>
+        <th>genero</th>
 		<th>grado</th>
-        <th>teléfono</th>
-		<th>fechadenacimiento</th>
+        <th>telefono</th>
+		<th>birth</th>
         <th>servicioquecontrata</th>
 		<th hidden>plantel</th>
       </tr>
@@ -121,14 +136,25 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   </div>
   <input id="export" type="text" name="add">
 </form>
+             <div id="salon" class="navbar"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
 
 </div>
-<div id="sidebar">
 
-<span id="add" style="font-size: 40px; width: 100%;" class="glyphicon glyphicon-plus-sign"></span>
-
-<span id="addHover">Nuevo contrato</span></div>
-</div>
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-ui.js"></script>

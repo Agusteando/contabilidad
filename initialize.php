@@ -1,6 +1,4 @@
 <?php
-$PLANTEL = $_POST["plantel"];
-$SERVICIO = $_POST["servicio"];
 
 $servername = "localhost";
 $username = "root";
@@ -14,7 +12,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT id,apellidoPaterno,apellidoMaterno,nombres,genero,servicio FROM contratos WHERE plantel='$PLANTEL' AND servicio='$SERVICIO'";
+$sql = "SELECT id,apellidoPaterno,apellidoMaterno,nombres,servicio,plantel FROM contratos";
 $result = $conn->query($sql);
 
 

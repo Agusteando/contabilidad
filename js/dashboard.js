@@ -1,22 +1,28 @@
 $(document).ready(function () {
 
-var data = { talleres:["artes","catesismo","club de tareas","danza árabe","futbol","guitarra","jazz","mini tennis","tai kwon do","taller de inglés","teatro musical","teclado"],comedores:["biberón","cena","comida","desayuno","papilla"],"tiempo extendido":['tiempo extendido'] };
+var data = {"talleres":["artes","catesismo","club de tareas","danza árabe","futbol","guitarra","jazz","mini tennis","tai kwon do","taller de inglés","teatro musical","teclado"],"comedores":["biberón","cena","comida","desayuno","papilla"],"tiempo extendido":['tiempo extendido'] };
 
-$(".datepicker").datepicker({
-    dateFormat: 'dd/mm/yy',
-    showOn: "button",
-    buttonImage: "images/calendar.gif",
-    buttonImageOnly: true,
-    onClose: function(dateText, inst) {
-        $(this).parent().parent().find(".datePlz").focus().text(dateText).blur();
-    }
-});
+
 
 var categorias = Object.keys(data)
 var conceptos = Object.values(data)
-
-
+var arr = [];
+var obj = {};
+for (i=0; i<conceptos.length; i++) {
+	for (j=0; j<conceptos[i].length; j++) {
+		var lista = conceptos[i]
+		arr.push(lista[j]);
+	}
+}
+console.log(arr);
 console.log(conceptos);
+
+for (i=0; i<arr.length; i++) {
+	obj[arr[i]] = {};
+}
+
+
+
 
 var container = document.getElementById('categorias');
 for (i=0; i<categorias.length; i++) {

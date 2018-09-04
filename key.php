@@ -1,6 +1,6 @@
 <?php
-$PLANTEL = $_POST["plantel"];
-$SERVICIO = $_POST["servicio"];
+$PLANTEL = $_POST['plantel'] ?? '';
+
 
 $servername = "localhost";
 $username = "root";
@@ -14,7 +14,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT id,apellidoPaterno,apellidoMaterno,nombres,genero,servicio FROM contratos WHERE plantel='$PLANTEL' AND servicio='$SERVICIO'";
+$sql = "SELECT almacenamiento FROM general WHERE plantel = '$PLANTEL'";
 $result = $conn->query($sql);
 
 
@@ -23,7 +23,7 @@ if ($result->num_rows > 0) {
 $json = mysqli_fetch_all ($result, MYSQLI_ASSOC);
 echo json_encode($json );
     }else{
-        echo "No se encontraron contratos";
+        echo "Error intentando obtener objeto JSON principal";
     }
 
 

@@ -249,20 +249,7 @@ overflow: hidden;
     transition: all 0.4s ease 0s;
   }
 }
-.marco {
-background-image: url("marco.png");
-background-repeat: no-repeat;
-background-position: center bottom;
-background-size: contain;
-	max-width: 200px;
-	min-width: 200px;
-	font-size: 18px;
-	margin: 10px;
-	padding-bottom: 105px;
-	font-family: 'Open Sans Condensed', sans-serif;
-	float: left;
-	cursor: pointer;
-}
+
 .bigBox {
     display: block;
     position: relative;
@@ -332,4 +319,10 @@ position: relative;
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 	
+}
+#fechaHoy {
+background: none;
+border-width: 0px;
+font-size: 20px;
+font-family: 'Open Sans Condensed', sans-serif;
 }

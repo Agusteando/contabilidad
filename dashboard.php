@@ -62,14 +62,17 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <div class="page-content">
       <div class="container">
 	   <div class="row">
-	   	<h2 style=""></h2>
+	   	<h2 style="float: left; margin: 10px;"></h2> <input id="fechaHoy" type="date" value="<?php echo date('Y-m-d'); ?>" name="fecha" readonly="readonly">
+		<button id="2sheets" class="btn custom1" style="font-size: 30px;">Guardar</button>
+		<input id="almacenamiento" type="text" hidden>
+		<input id="data" type="text" hidden>
 	   </div>
         <div class="row">
 		
-          <div class="col-md-12">
+          <div class="col-md-12" id="contenido">
+		  
 <form id="formContrato" method="get" style="display: none; margin-left: auto;margin-right: auto; width: 75%;">
 
-<button id="export-btn" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>GUARDAR</button>
 <div id="table" class="table-editable custom1">
     <span class="table-add glyphicon glyphicon-plus"></span>
     <table class="table">
@@ -135,6 +138,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </table>
   </div>
   <input id="export" type="text" name="add">
+  <button id="export-btn" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>GUARDAR</button>
 </form>
              <div id="salon" class="navbar"></div>
 

@@ -1,7 +1,6 @@
 <?php
 $PLANTEL = $_POST["plantel"];
 $SERVICIO = $_POST["servicio"];
-
 $servername = "localhost";
 $username = "root";
 $password = "nicole";

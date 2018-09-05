@@ -1,16 +1,18 @@
 $( document ).ready(function( $ ) {
 
+
 plantel = $('#plantel').val();
 request = $.ajax({
                         url: "key.php",
 						type: "POST",
 						data: {'plantel':plantel},
 						success: function(response) {
-						console.log(response);}
+						$('#almacenamiento').val(response);
+						console.log('Verifica integridad de base de datos: ');	
+						console.log(response);						
+						}
 				});	
-	
-
-/*
+				/*
 request = $.ajax({	//This is only after sending to sheets through a save button, so it creates table structure on ss.
                         url: "initialize.php",
 						type: "post",
@@ -20,11 +22,43 @@ request = $.ajax({	//This is only after sending to sheets through a save button,
 */
 				
 $('#salon').on('change','input',function() {
+	var obj = {};
+	var date = new Date();
+	var hora = date.toLocaleTimeString();
+	
+	
+	if ($('#servicio').val() === "tiempo extendido") {
+		
+		if ($(this).parent().find('input').is(':checked')) {
+	var oldObj = $('#data').val();
+	if (oldObj.length > 0) {
+	var obj = JSON.parse(oldObj);
+	}
+	
+	obj[$(this).val()] = hora;
+	
+	console.log(obj);
+	
+	
+	$('#data').val(JSON.stringify(obj));
+		} else {
+	var oldObj = $('#data').val();
+	if (oldObj.length > 0) {
+	var obj = JSON.parse(oldObj);
+	}
+	delete obj[$(this).val()]
+	console.log(obj);
+	$('#data').val(JSON.stringify(obj));
+		}
+	} else {
+	
 	var arr = [];
 	$('input:checked').each(function() {
 		arr.push($(this).val());
 	});
-	console.log(arr);	
+	console.log(arr);
+$('#data').val(JSON.stringify(arr));	
+	}
 });
 
 $('.properPlz').change(function() {
@@ -59,7 +93,7 @@ console.log(arr);
 						type: "post",
                         data: arr,
 						success: function(response) {
-						$('#contents').append(response);
+
 						var data = JSON.parse(response);
 						
 						console.log(data);
@@ -113,7 +147,8 @@ request.done(function (response, textStatus, jqXHR){
 $('#categorias').hide();
 $('#containerTwo').show();});
 request.fail(function (jqXHR, textStatus, errorThrown){console.error("Failure: "+ textStatus, errorThrown);});
-request.always(function () {}); event.preventDefault();
+request.always(function () {}); $('#categorias').hide();
+$('#containerTwo').show();event.preventDefault(); 
 });
 
 

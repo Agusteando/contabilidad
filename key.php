@@ -26,7 +26,5 @@ echo json_encode($json );
         echo "Error intentando obtener objeto JSON principal";
     }
 
-
-
 $conn->close();
 ?>

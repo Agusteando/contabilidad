@@ -8,24 +8,26 @@ request = $.ajax({
 						data: {'plantel':plantel},
 						success: function(response) {
 						$('#almacenamiento').val(response);
-						console.log('Verifica integridad de base de datos: ');	
-						console.log(response);						
+						console.log('Verifica integridad de base de datos: ');
+						var view = JSON.parse(response)[0];						
+						console.log(view);						
 						}
 				});	
-				/*
-request = $.ajax({	//This is only after sending to sheets through a save button, so it creates table structure on ss.
+				
+request = $.ajax({	//Exports our database from MySQL to be used in sheets later.
                         url: "initialize.php",
 						type: "post",
 						success: function(response) {
-						console.log(response);}
+						$('#contratosSheets').val(response)
+						}
 				});
-*/
+
 				
 $('#salon').on('change','input',function() {
 	var obj = {};
 	var date = new Date();
 	var hora = date.toLocaleTimeString();
-	
+	$('#status').text('Sin guardar');	
 	
 	if ($('#servicio').val() === "tiempo extendido") {
 		
@@ -71,8 +73,9 @@ $('#formContrato').submit(function(event) {
 });
 
 $('#add').click(function() {
-
+	$('#2obj').toggle();
 	$('#formContrato').toggle();
+	$('#salon').toggle();
 });
 	
 $('.btn_conceptos').click(function() {

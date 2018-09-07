@@ -19,7 +19,7 @@ $result = $conn->query($sql);
 
 
 if ($conn->query($sql) === TRUE) {
-    echo "Record updated successfully";
+    echo $data;
 } else {
     echo "Error updating record: " . $conn->error;
 }

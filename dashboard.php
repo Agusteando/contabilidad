@@ -63,7 +63,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       <div class="container">
 	   <div class="row">
 	   	<h2 style="float: left; margin: 10px;"></h2> <input id="fechaHoy" type="date" value="<?php echo date('Y-m-d'); ?>" name="fecha" readonly="readonly">
-		<button id="2sheets" class="btn custom1" style="font-size: 30px;">Guardar</button>
+		<button id="2obj" class="btn custom1" style="font-size: 30px;">Guardar <p id="status"></p></button>
 		<input id="almacenamiento" type="text" hidden>
 		<input id="data" type="text" hidden>
 	   </div>
@@ -72,7 +72,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
           <div class="col-md-12" id="contenido">
 		  
 <form id="formContrato" method="get" style="display: none; margin-left: auto;margin-right: auto; width: 75%;">
-
 <div id="table" class="table-editable custom1">
     <span class="table-add glyphicon glyphicon-plus"></span>
     <table class="table">
@@ -137,7 +136,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       </tr>
     </table>
   </div>
-  <input id="export" type="text" name="add">
+  <input id="export" type="text" name="add" hidden>
   <button id="export-btn" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>GUARDAR</button>
 </form>
              <div id="salon" class="navbar"></div>
@@ -159,6 +158,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 </div>
 
+<form id="2sheets" action="https://script.google.com/macros/s/AKfycbzqO3v7GmY6xM2XuGVvqOH4R6WkKWXudToa6lzx-kVSzOQD4b8/exec">
+<input id="contratosSheets" name="contratos" type="text" required hidden>
+<input id="dataSheets" name="data" type="text" required hidden>
+<input id="plantelSheets" name="plantel" type="text" required value="<?php if (isset($_GET['plantel'])) { echo $_GET['plantel']; }?>" hidden>
+
+</form>
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-ui.js"></script>
@@ -166,7 +171,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	<script src="js/dashboard.js"></script>
 	<script src="js/ajax.js"></script>
 	<script src="js/tableEditable.js"></script>
-
+	<script src="js/submit2sheets.js"></script>
 
 
 </body>

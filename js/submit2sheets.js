@@ -5,7 +5,7 @@ $( document ).ready(function( $ ) {
                 var serializedData = $form.serialize();
 
                 $('#status').text('Actualizando');
-				
+	
                 request = $.ajax({
                         url: "https://script.google.com/macros/s/AKfycbzqO3v7GmY6xM2XuGVvqOH4R6WkKWXudToa6lzx-kVSzOQD4b8/exec",
 						type: "POST",
@@ -18,7 +18,7 @@ $( document ).ready(function( $ ) {
         
 
                 request.fail(function (jqXHR, textStatus, errorThrown){
-                $('#status').html('Error al actualizar</br>Llamar al 7221 031920');
+                $('#status').html('Error: Verifica la conección de tu dispositivo a WI-FI</br>Dudas al 7221031920');
                         console.error(
                                 "The following error occured: "+
                                 textStatus, errorThrown

@@ -9,6 +9,9 @@
  $plantel = $_POST["plantel"];
  $servicio = $_POST["servicioquecontrata"];
  $telefono = $_POST["telefono"];
+ $email = $_POST["email"];
+ $tiempoextendido = $_POST["tiempoextendido"];
+ $costo = $_POST["costo"];
 
 $servername = "localhost";
 $username = "root";
@@ -22,8 +25,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "INSERT INTO contratos (apellidoPaterno, apellidoMaterno, birth, grado, genero, nombres, plantel, servicio, telefono)
-VALUES ('$apellidoP', '$apellidoM', '$birth', '$grado', '$genero', '$nombres', '$plantel', '$servicio', '$telefono')";
+$sql = "INSERT INTO contratos (apellidoPaterno, apellidoMaterno, birth, grado, genero, nombres, plantel, servicio, telefono, tiempoextendido, email, costo)
+VALUES ('$apellidoP', '$apellidoM', '$birth', '$grado', '$genero', '$nombres', '$plantel', '$servicio', '$telefono','$tiempoextendido','$email','$costo')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";

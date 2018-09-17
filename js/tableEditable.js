@@ -5,11 +5,15 @@ var $EXPORT = $('#export');
 
 
 	$('.table').on('focus', '.servicioPlz', function () {
+	var data = JSON.parse($('#conceptos').val());
+	var conceptos = Object.values(data)
+	var source = [].concat.apply([],conceptos);
 
 		$(this).autocomplete({
-			source: ["desayuno","comida","cena","jazz","tai kwon do","ballet","tiempo extendido"],
+			source: source,
 			minLength: 0,
-		}).focus(function () {
+		}).click(function () {
+$(this).data("ui-autocomplete").menu.bindings = $();
 			$(this).autocomplete("search","");
 		});
 	});
@@ -19,7 +23,7 @@ var $EXPORT = $('#export');
 		$(this).autocomplete({
 			source: ["Masculino","Femenino"],
 			minLength: 0,
-		}).focus(function () {
+		}).click(function () {
 			$(this).autocomplete("search","");
 		});
 	});
@@ -39,8 +43,10 @@ $('body').on('focus', '[contenteditable]', function() {
 $('.table-add').click(function () {
 	
   var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+  $clone.find('.datePlz').datetimepicker();
 
   $TABLE.find('table').append($clone);
+
 });
 
 $('.table-remove').click(function () {
@@ -106,7 +112,7 @@ for (i=1; i<data.length; i++) {
                 });
 				
 request.done(function (response, textStatus, jqXHR){
-$('h2').text('success');
+$('h2').text('Creación de contrato exitosa');
 
 });
 request.fail(function (jqXHR, textStatus, errorThrown){console.error("Failure: "+ textStatus, errorThrown);

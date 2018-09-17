@@ -1,10 +1,6 @@
 $(document).ready(function () {
 
-	var data = {
-		"talleres": ["artes", "catesismo", "club de tareas", "danza árabe", "futbol", "guitarra", "jazz", "mini tennis", "tai kwon do", "taller de inglés", "teatro musical", "teclado"],
-		"comedores": ["biberón", "cena", "comida", "desayuno", "papilla"],
-		"tiempo extendido": ['tiempo extendido']
-	};
+
 
 	$('#2obj').click(function () {
 		var data = JSON.parse($('#almacenamiento').val()); //Make it readable from input by an onload function
@@ -53,10 +49,11 @@ $(document).ready(function () {
 
 			//This entire block works with simple arrays for Servicio de alimentos. No associative arrays.
 			if (arrayExistente === undefined) {
-				arr = [];
+				arrayExistente = [];
 
 			} //Prevents undefined from being inside our array.
-			var merge = arr.concat(array); //To concat existing and new values here.
+			//console.log(arrayExistente +" + "+array+": ");
+			var merge = arrayExistente.concat(array); //To concat existing and new values here.
 			for (i = 0; i < merge.length; i++) {
 				obj[merge[i]] = "";
 			} //For smart loop to get unique values
@@ -82,41 +79,22 @@ $(document).ready(function () {
 			success: function (data) {
 				$('#dataSheets').val(data);
 				$('#status').text('Guardado');
+				request = $.ajax({	//Exports our database from MySQL to be used in sheets later.
+                        url: "initialize.php",
+						type: "post",
+						success: function(response) {
+						$('#contratosSheets').val(response);
+						var data = JSON.parse(response); //Make it readable from input by an onload function
+						var data = data[0]; //It comes in an array so get the only value.
+						console.log(data);
+						}
+				});
 				$('#2sheets').submit();
 			}
 		});
 	});
 
-	var categorias = Object.keys(data)
-	var conceptos = Object.values(data)
-
-
-	var container = document.getElementById('categorias');
-	for (i = 0; i < categorias.length; i++) {
-
-		var fila = document.createElement('tr');
-		var label = document.createElement('td');
-		var contents = document.createElement('td');
-		fila.style.width = "100%";
-		fila.className = "filas_servicios";
-		/*	label.style.display = "inline-block"; */
-		label.innerHTML = categorias[i];
-		fila.appendChild(label);
-		fila.appendChild(contents);
-		label.className = "label_servicios";
-		for (j = 0; j < conceptos[i].length; j++) {
-			var estosConceptos = conceptos[i];
-			var btn = document.createElement('button');
-			btn.className = "btn_conceptos";
-			btn.innerHTML = estosConceptos[j];
-			btn.style.width = "100%";
-			btn.name = 'servicio';
-			btn.value = estosConceptos[j];
-			contents.appendChild(btn);
-		}
-		container.appendChild(fila);
-	}
-
+	
 
 });
 

@@ -13,7 +13,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT id,apellidoPaterno,apellidoMaterno,nombres,genero,servicio FROM contratos WHERE plantel='$PLANTEL' AND servicio='$SERVICIO'";
+$sql = "SELECT id,apellidoPaterno,apellidoMaterno,nombres,genero,servicio,tiempoextendido,costo FROM contratos WHERE plantel='$PLANTEL' AND servicio='$SERVICIO'";
 $result = $conn->query($sql);
 
 

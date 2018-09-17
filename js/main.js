@@ -1,5 +1,13 @@
 $(document).ready(function () {
+	
+var rol = ($('#rol').val()).toLowerCase();
 
+if (rol !== 'admin') {
+$('.btn-plantel').not('#'+rol).each(function() {
+
+	$(this).prop('disabled',true).css({'opacity':0.2,'cursor':'not-allowed'});
+});
+}
 //Hacer un query para extraer data relevante desde MySQL, si no es factible google sheets.
 
 var data = { 'PM':{'comedores':200,'talleres':100,"tiempo extendido":10},'SM':{'comedores':200,'talleres':100,"tiempo extendido":10},'PT':{'comedores':200,'talleres':100,"tiempo extendido":10},'ST':{'comedores':200,'talleres':100,"tiempo extendido":10},'KM':{'comedores':200,'talleres':100,"tiempo extendido":10},'KT':{'comedores':200,'talleres':100,"tiempo extendido":10} };

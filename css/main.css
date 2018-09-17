@@ -69,10 +69,8 @@ max-width: 150px;
 	 width: 100%;  
 font-size: 15px;
 }
-
 #categorias {
-  width: 100vw;
-  height: 93vh;
+
   font-family: Raleway,sans-serif;
 
 }
@@ -81,15 +79,11 @@ font-size: 15px;
 	font-size: 25px;
 }
 .filas_servicios {
-  width: 100%;
-
-  border-style: solid;
-  border-color: orange;
-  border-width: 4px;
 }
 .label_servicios {
-	font-size: 20px;
-	width: 100px;
+	vertical-align: middle;
+	font-size: 30px;
+
 	-webkit-transform: rotate(-90deg);
 
 /* Firefox */
@@ -151,12 +145,11 @@ display: block;
 }
 
 .table-add {
-  color: #070;
+  color: #006fba;
   cursor: pointer;
-  position: absolute;
-  top: 8px;
-  right: 0;
-  
+  float: right;
+  margin-right: 20px;
+  font-size: 30px;
   &:hover {
     color: #0b0;
   }
@@ -166,9 +159,6 @@ display: block;
 	box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
 	background-color: #ff9433;
 	color: white;
-}
-.dropDownGender {
-color: black;
 }
 h2 {
   font-family: "rond", Helvetica, sans-serif;
@@ -211,11 +201,10 @@ overflow: hidden;
   margin-left: -250px;
   left: 250px;
   width: 250px;
-  background: #CCCCCC;
+  background-color: #006fba;
   position: fixed;
   height: 100%;
   overflow-y: auto;
-  z-index: 1000;
   transition: all 0.4s ease 0s;
 }
 
@@ -328,4 +317,15 @@ font-family: 'Open Sans Condensed', sans-serif;
 }
 #status {
 font-size: 10px;
+}
+.horaSalida {
+	box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+	background-color: #21de48;
+	color: white;
+}
+.genderPlz {
+		cursor: pointer;
+}
+.servicioPlz {
+		cursor: pointer;
 }

@@ -1,110 +1,52 @@
 function build(data) {
 	var categorias = Object.keys(data)
 	var conceptos = Object.values(data)
-	var arrayConceptos = [].concat.apply([],conceptos);
-	var plantel = $('#plantel').val();
 
 	var container = document.getElementById('categorias');
-	container.style.margin = "50px";
 	for (i = 0; i < categorias.length; i++) {
-	
-		var fila = document.createElement('div');
-		var label = document.createElement('td');
-		fila.style.display = "table-row";
-		var contents = document.createElement('td');
-		contents.style.width = "100%";
-	/* 	contents.style.verticalAlign = "middle"; */
-
-		fila.style.width = "100%";
-		fila.className = "filas_servicios";
-
-
-		label.style.width = "25vw";
-		label.innerHTML = properCase(categorias[i]);
-		fila.appendChild(label);
-		fila.className = "ui-widget-content";
+		var category = document.createElement('tr');
+		
+		var label = document.createElement('span');
+		label.style.display = 'flex';
+		label.style. cssFloat = "left";
 		label.className = "label_servicios";
+		
+
+		category.innerHTML = categorias[i];
+
+		
 		for (j = 0; j < conceptos[i].length; j++) {
-
-
+			
+		var row = document.createElement('tr');
+		row.style.width = "100%";
+		row.className = "filas_servicios";		
+		var contents = document.createElement('td');			
+		var contents2 = document.createElement('td');
+		var contents3 = document.createElement('td');
 			var btn = document.createElement('button');
 			var estosConceptos = conceptos[i];
-			var row = document.createElement('tr');
-
-			
-			var contents1 = document.createElement('td');
-			var contents2 = document.createElement('td');
-			var contents3 = document.createElement('td');
-			
-			contents1.appendChild(btn);
-			contents2.innerHTML = 0
-			contents3.innerHTML = 0
-			
-			
-			contents1.style.width = "100%";
-			contents2.style.width = "100px";
-			contents3.style.width = "100px";
-
-
 			btn.className = "btn_conceptos ui-button ui-corner-all";
 			btn.innerHTML = estosConceptos[j]; 
 			btn.style.width = "100%";
 			btn.style.color = "#337ab7";
 			btn.name = 'servicio';
 			btn.value = estosConceptos[j];
-			row.appendChild(btn);
-			row.appendChild(contents2);
-			row.appendChild(contents3);
-			
-		
-
-			contents.appendChild(row);
-
+			contents.appendChild(btn);
+			contents2.innerHTML = 'total de contratos';
+			contents3.innerHTML = 'monto total';
+		row.appendChild(contents);	
+		row.appendChild(contents2);
+		row.appendChild(contents3);
+		category.appendChild(row);
 		}
-		fila.appendChild(contents);
-		container.appendChild(fila);
+		
+ 		row.appendChild(label); 
+		container.appendChild(category);
 	}
-			
+
 		$('#conceptos').val(JSON.stringify(data))
-		
-		var contratos = $('#contratosSheets').val();
-		var json = JSON.parse(contratos); //Make it readable from input by an onload function		
-		var obj = {};
-		var obj2 = {};
-		
-		for (i=0; i<arrayConceptos.length; i++) {
-			obj[arrayConceptos[i]] = 0;
-			obj2[arrayConceptos[i]] = 0;
-		}
-		
-		for (j=0; j<arrayConceptos.length; j++) {
-			var counter = 1;
-		for (i=0; i<json.length; i++) {
-		if (json[i].servicio == arrayConceptos[j] && (json[i].plantel).toUpperCase() == plantel.toUpperCase()) {
-
-			obj[arrayConceptos[j]] = counter++
-			obj2[arrayConceptos[j]] += parseInt(json[i].costo);
-			
-				console.log(obj);
-			}
-		}
-	}
-
-	var contratados = Object.values(obj);
-	var recuperacion = Object.values(obj2);
-
-console.log(contratados);
-
-	var i = 0;
-	$('.btn_conceptos').each(function() {
-		$(this).next().text(contratados[i]);
-		$(this).next().next().text(recuperacion[i]);
-		i++
-	});
-
-	
-		
 }
+
 
 jQuery.fn.textNodes = function() {
   return this.contents().filter(function() {
@@ -210,16 +152,6 @@ $('#data').val(JSON.stringify(arr));
 	
 
 $( document ).ready(function( $ ) {
-	
-		request = $.ajax({	//Exports our database from MySQL to be used in sheets later.
-                        url: "initialize.php",
-						type: "post",
-						success: function(response) {
-						$('#contratosSheets').val(response);
-
-
-						}
-				});
 
 //var url_string = window.location.href;
 //var url = new URL(url_string);
@@ -258,7 +190,17 @@ request = $.ajax({
 						}
 				});	
 				
+request = $.ajax({	//Exports our database from MySQL to be used in sheets later.
+                        url: "initialize.php",
+						type: "post",
+						success: function(response) {
+						$('#contratosSheets').val(response);
+						var data = JSON.parse(response); //Make it readable from input by an onload function
+						var data = data[0]; //It comes in an array so get the only value.
+						console.log(data);
 
+						}
+				});
 
 
 

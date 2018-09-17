@@ -1,5 +1,5 @@
 <?php
-$PLANTEL = $_POST['plantel'] ?? '';
+$PLANTEL = $_POST['plantel'];
 
 
 $servername = "localhost";
@@ -14,7 +14,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT almacenamiento FROM general WHERE plantel = '$PLANTEL'";
+$sql = "SELECT almacenamiento,skeleton FROM general WHERE plantel = '$PLANTEL'";
 $result = $conn->query($sql);
 
 

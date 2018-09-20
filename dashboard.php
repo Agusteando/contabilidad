@@ -60,7 +60,39 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <div id="wrapper">
   <div id="sidebar-wrapper" class="ui-widget-shadow">
     <ul class="sidebar-nav">
-      <li class="sidebar-brand"><span id="add" style="margin: 15px; font-size: 60px; width: 100%; color: white;" class="glyphicon glyphicon-plus-sign"></span><a href="#" id="addHover" class="ui-state-highlight">Nuevo contrato</a></li>
+      <li class="sidebar-brand">
+	  
+	  <button class="btn custom1" id="agregarContrato" style="margin-bottom: 5px; font-size: 20px; width: 100%; cursor:pointer;"><span class="glyphicon glyphicon-plus" style="float: left"></span>Nuevo contrato</button>
+	  
+	  </li>
+	  <li>
+	  
+	  <button class="btn custom1" id="agregarEventual" style="margin-bottom: 5px; font-size: 20px; width: 100%; cursor:pointer;"><span class="glyphicon glyphicon-plus" style="float: left"></span>Eventuales</button>
+	  
+</li>
+	  <li>
+	  	  <button class="btn custom1" id="agregarConcepto" style="margin-bottom: 5px; font-size: 20px; width: 100%; cursor:pointer;"><span class="glyphicon glyphicon-plus" style="float: left"></span>Conceptos</button>
+	  </li>
+	  <table id="tablaConceptos">
+	  </table>
+			 <form id="formEventual" method="get" style="display: none">
+<fieldset>
+<legend id="labelEventual"> Servicio eventual </legend>
+<button id="guardarEventual" type="submit" class="btn custom1"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+<p><label class="field" for="">Nombre:</label><input type="text" name="nombre" class="textbox-300"/></p>
+<p><label class="field" for="">Grado y Grupo: </label><input type="text" name="grado" class="textbox-300"/></p>
+<p><label class="field" for="">Costo: </label><input type="number" name="costo" class="textbox-300"/></p>
+<p hidden><label class="field" for="">Tiempo extendido: </label><input type="time" name="tiempoextendido" class="textbox-300"></p>
+<div class="hidden">
+<p><label class="field" for="">Servicio:</label><input id="servicio" type="text" name="servicio" class="textbox-300" value="<?php if (isset($_GET['servicio'])) { echo $_GET['servicio']; } ?>"/></p>
+<p><label class="field" for="">Plantel: </label><input id="plantel" type="text" name="plantel" class="textbox-300" value="<?php if (isset($_GET['plantel'])) { echo $_GET['plantel']; } ?>"/></p>
+<p><label class="field" for="">Fecha: </label><input id="fecha" type="text" name="fecha" class="textbox-300" value="<?php echo date('Y-m-d'); ?>" /></p>
+<p><label class="field" for="">Estatus: </label><input type="text" name="estatus" class="textbox-300" value="pendiente"/></p>
+</div>
+</fieldset>
+</form>	  
+	  
+	  
     </ul>
   </div>
   <div id="page-content-wrapper">
@@ -69,15 +101,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	   <div class="row">
 	   	<h2 style="float: left; margin: 10px;"><?php if (isset($_GET['servicio'])) { echo $_GET['servicio']; } ?></h2> <input id="fechaHoy" type="date" value="<?php echo date('Y-m-d'); ?>" name="fecha" readonly="readonly">
 		<button id="2obj" class="btn custom1" style="font-size: 30px;">Guardar <p id="status"></p></button>
-		<input id="almacenamiento" type="text" hidden>
+		<input id="almacenamiento" type="text">
 		<input id="data" type="text" hidden>
 	   </div>
         <div class="row">
-		
-          <div class="col-md-12" id="contenido">
+        <div class="col-md-12" id="contenido">
+		  
+		  
 	<input id="timepicker" type="text" style="visibility: hidden; width: 0px; float: left;">
-<form id="formContrato" method="get" style="display: none; margin-left: auto;margin-right: auto; width: 75%;">
-<div id="table" class="table-editable custom1">
+<form id="formContrato" method="get" style="display: none; margin-left: auto;margin-right: auto; width: 75%;"><div id="table" class="table-editable custom1">
     <span class="table-add glyphicon glyphicon-plus"></span>
     <table class="table">
 	  <tr hidden>
@@ -93,6 +125,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 		<th hidden>costo</th>
 		<th hidden>tiempoextendido</th>
 		<th hidden>plantel</th>
+		<th hidden>estatus</th>
       </tr>
       <tr>
         <td>Apellido Paterno</td>
@@ -104,9 +137,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 		<td>Correo electrónico</td>
 		<td>Fecha de nacimiento </td>
         <td>Servicio que contrata</td>
-		 <td>Costo</td>
+	    <td>Costo</td>
 		<td class="horaSalida" hidden>Tiempo Extendido</td>
 		<td hidden>Plantel</td>
+		<td hidden>Estatus</td>
 
       </tr>
       <tr>
@@ -122,7 +156,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 		<td class="costoPlz" contenteditable="true"></td>
 		<td class="horaSalida" contenteditable="true" hidden><input id="showTime" style="opacity: 0" hidden></td>
 		<td class="getPlantel" contenteditable="false" hidden><?php echo $_GET['plantel']; ?></td>
-
+		<td hidden contenteditable="false">pendiente</td>
         <td>
           <span class="table-remove glyphicon glyphicon-remove"></span>
         </td>
@@ -145,6 +179,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 		<td class="costoPlz" contenteditable="true"></td>
 		<td class="horaSalida" contenteditable="true" hidden></td>
 		<td class="getPlantel" contenteditable="false" hidden><?php echo $_GET['plantel']; ?></td>
+		<td hidden contenteditable="false">pendiente</td>
 
         <td>
           <span class="table-remove glyphicon glyphicon-remove"></span>
@@ -157,9 +192,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </table>
   </div>
   <input id="export" type="text" name="add" hidden>
-  <button id="export-btn" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>GUARDAR</button>
-</form>
-             <div id="salon" class="navbar"></div>
+ 
+  <button id="export-btn" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+  </form>
+             
+
+
+			 <div id="salon" class="navbar"></div>
 
           </div>
         </div>
@@ -178,11 +217,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 </div>
 <input id="conceptos" type="text" hidden>
-<form id="2sheets" action="https://script.google.com/macros/s/AKfycbzqO3v7GmY6xM2XuGVvqOH4R6WkKWXudToa6lzx-kVSzOQD4b8/exec">
-<input id="contratosSheets" name="contratos" type="text" required hidden>
-<input id="dataSheets" name="data" type="text" required hidden>
-<input id="plantelSheets" name="plantel" type="text" required value="<?php if (isset($_GET['plantel'])) { echo $_GET['plantel']; }?>" hidden>
-
+<form id="2sheets" action="https://script.google.com/macros/s/AKfycbzqO3v7GmY6xM2XuGVvqOH4R6WkKWXudToa6lzx-kVSzOQD4b8/exec" method="post">
+<input id="contratosSheets" name="contratos" type="text" required>
+<input id="dataSheets" name="data" type="text" required value="0">
+<input id="plantelSheets" name="plantel" type="text" required value="<?php if (isset($_GET['plantel'])) { echo $_GET['plantel']; }?>">
 </form>
 
 	<script src="js/jquery.min.js"></script>

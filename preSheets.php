@@ -1,6 +1,6 @@
 <?php
-$data = $_POST['almacenamiento'] ?? '';
-$plantel = $_POST['plantel'] ?? '';
+$data = $_POST['almacenamiento'];
+$plantel = $_POST['plantel'];;
 
 $servername = "localhost";
 $username = "root";

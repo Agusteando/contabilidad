@@ -1,15 +1,24 @@
 $( document ).ready(function( $ ) {
- $("#2sheets").submit(function(event){
-                var $form = $(this);
+
+});
+
+function updateSheets() {
+
+                var $form = $("#2sheets");
                 var $inputs = $form.find("input, select, button, textarea");
                 var serializedData = $form.serialize();
 
                 $('#status').text('Actualizando');
-	
+				var url = "https://script.google.com/macros/s/AKfycbzqO3v7GmY6xM2XuGVvqOH4R6WkKWXudToa6lzx-kVSzOQD4b8/exec?tipo="
+				var param = "2sheets"
+				
+				
                 request = $.ajax({
-                        url: "https://script.google.com/macros/s/AKfycbzqO3v7GmY6xM2XuGVvqOH4R6WkKWXudToa6lzx-kVSzOQD4b8/exec",
+						crossDomain: true,
+                        url: url+encodeURIComponent(param),
 						type: "POST",
-                        data: serializedData
+                        data: serializedData,
+						dataType: "json"
                 });
                 request.done(function (response, textStatus, jqXHR){
                         // log a message to the console
@@ -18,7 +27,7 @@ $( document ).ready(function( $ ) {
         
 
                 request.fail(function (jqXHR, textStatus, errorThrown){
-                $('#status').html('Error: Verifica la conección de tu dispositivo a WI-FI</br>Dudas al 7221031920');
+                $('#status').html('Error: No se guardaron los datos.');
                         console.error(
                                 "The following error occured: "+
                                 textStatus, errorThrown
@@ -28,6 +37,5 @@ $( document ).ready(function( $ ) {
              request.always(function () {
                         // reenable the inputs
                 });
-                event.preventDefault();
-        });
-});
+               
+ }

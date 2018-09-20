@@ -12,6 +12,7 @@
  $email = $_POST["email"];
  $tiempoextendido = $_POST["tiempoextendido"];
  $costo = $_POST["costo"];
+ $estatus = $_POST["estatus"];
 
 $servername = "localhost";
 $username = "root";
@@ -25,8 +26,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "INSERT INTO contratos (apellidoPaterno, apellidoMaterno, birth, grado, genero, nombres, plantel, servicio, telefono, tiempoextendido, email, costo)
-VALUES ('$apellidoP', '$apellidoM', '$birth', '$grado', '$genero', '$nombres', '$plantel', '$servicio', '$telefono','$tiempoextendido','$email','$costo')";
+$sql = "INSERT INTO contratos (apellidoPaterno, apellidoMaterno, birth, grado, genero, nombres, plantel, servicio, telefono, tiempoextendido, email, costo, estatus)
+VALUES ('$apellidoP', '$apellidoM', '$birth', '$grado', '$genero', '$nombres', '$plantel', '$servicio', '$telefono','$tiempoextendido','$email','$costo','$estatus')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";

@@ -1,17 +1,18 @@
 $(document).ready(function () {
 
+/* 	document.getElementById("export-btn").disabled = true; */
 
+	$('#2obj').click(function (e) {
 
-	$('#2obj').click(function () {
 		var data = JSON.parse($('#almacenamiento').val()); //Make it readable from input by an onload function
 		var data = data[0]; //It comes in an array so get the only value.
 		var data = JSON.parse(data['almacenamiento']); //Get through the first key
-		console.log(data);
+		
+
+
 		var obj = {}; //For smart loop to get unique values
 		var arr = []; //To concat existing and new values here.
 		servicio = data[$('#servicio').val()];
-
-
 		var arrayExistente = Object.values(data[$('#servicio').val()]); //Create an array of existing values.
 
 
@@ -21,8 +22,6 @@ $(document).ready(function () {
 
 		if ($('#servicio').val() === "tiempo extendido") {
 			console.log(Array.isArray(array));
-
-
 			console.log(arrayExistente);
 			if (arrayExistente === undefined) {
 				var arrayExistente = servicio[fecha] = {};
@@ -43,10 +42,8 @@ $(document).ready(function () {
 
 			}
 
-			console.log(data);
+
 		} else {
-
-
 			//This entire block works with simple arrays for Servicio de alimentos. No associative arrays.
 			if (arrayExistente === undefined) {
 				arrayExistente = [];
@@ -68,35 +65,29 @@ $(document).ready(function () {
 
 		data = JSON.stringify(data); //Save as a string so database can store it without removing empty keys.
 
+$('#dataSheets').val(data);
+			guardaRegistros(data,e);	
+	});
 
-		request = $.ajax({
+
+});
+
+function guardaRegistros(data,e) {
+
+console.log(data);
+	var plantel = $('#plantelSheets').val();
+			 request = $.ajax({
 			url: "preSheets.php", //First: Save to DB and then send to Sheets.
 			type: "POST",
 			data: {
 				'almacenamiento': data,
 				'plantel': plantel
 			},
-			success: function (data) {
-				$('#dataSheets').val(data);
-				$('#status').text('Guardado');
-				request = $.ajax({	//Exports our database from MySQL to be used in sheets later.
-                        url: "initialize.php",
-						type: "post",
-						success: function(response) {
-						$('#contratosSheets').val(response);
-						var data = JSON.parse(response); //Make it readable from input by an onload function
-						var data = data[0]; //It comes in an array so get the only value.
-						console.log(data);
-						}
-				});
-				$('#2sheets').submit();
+			success: function () {
+				init(e);
 			}
-		});
-	});
-
-	
-
-});
+		}); 
+}
 
 var properCase = function (str) {
 	str = str.toLowerCase().split(' ');

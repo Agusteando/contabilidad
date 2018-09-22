@@ -108,12 +108,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 
     <div id="formLogin" style="display: block;">
-	<div class="wrap"><p id='colors' hidden>Alex</p><h2 id="logo"></h2>
+	<div class="wrap"><p id='colors' hidden>Multi servicios</p>
 	<div class="header">
-            <h1>Contabilidad digital</h1>
+            <h1>Control de registros</h1>
    
             </div>
-
+<h1 id="logo" style="word-wrap: break-word"></h1>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 		<input type="submit" class="btnAcceder" value="Acceder">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">

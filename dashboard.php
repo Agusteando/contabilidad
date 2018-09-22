@@ -101,7 +101,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	   <div class="row">
 	   	<h2 style="float: left; margin: 10px;"><?php if (isset($_GET['servicio'])) { echo $_GET['servicio']; } ?></h2> <input id="fechaHoy" type="date" value="<?php echo date('Y-m-d'); ?>" name="fecha" readonly="readonly">
 		<button id="2obj" class="btn custom1" style="font-size: 30px;">Guardar <p id="status"></p></button>
-		<input id="almacenamiento" type="text">
+		<input id="almacenamiento" type="text" hidden>
 		<input id="data" type="text" hidden>
 	   </div>
         <div class="row">
@@ -220,7 +220,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <form id="2sheets" action="https://script.google.com/macros/s/AKfycbzqO3v7GmY6xM2XuGVvqOH4R6WkKWXudToa6lzx-kVSzOQD4b8/exec" method="post">
 <input id="contratosSheets" name="contratos" type="text" required>
 <input id="dataSheets" name="data" type="text" required value="0">
-<input id="plantelSheets" name="plantel" type="text" required value="<?php if (isset($_GET['plantel'])) { echo $_GET['plantel']; }?>">
+<input id="plantelSheets" name="plantel" type="text" required value="<?php if (isset($_GET['plantel'])) { echo $_GET['plantel']; }?>" hidden>
 </form>
 
 	<script src="js/jquery.min.js"></script>

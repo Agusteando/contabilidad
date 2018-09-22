@@ -67,6 +67,7 @@ function build(data) {
 
 	var contratos = $('#contratosSheets').val();
 	var json = JSON.parse(contratos); //Make it readable from input by an onload function		
+	console.log(json);
 	var obj = {};
 	var obj2 = {};
 
@@ -320,7 +321,7 @@ $(document).ready(function ($) {
 				build(JSON.parse(data['skeleton']))
 			});
 
-			tablaConceptos(JSON.parse(data['skeleton']));
+/* 			tablaConceptos(JSON.parse(data['skeleton'])); */
 	
 		}
 	});

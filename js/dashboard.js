@@ -1,8 +1,32 @@
 $(document).ready(function () {
 
 /* 	document.getElementById("export-btn").disabled = true; */
+$('#max').click(function() {
+	console.log('click');
+	$(this).parent().parent().css({'top':0,'right':0,'height':'100vh'})
+});
 
+$('#min').click(function() {
+	$(this).parent().parent().css({'top':'','bottom':0,'right':0,'height':'50px'});
+	
+	$(this).parent().parent().css('height','');
+	
+});
 
+$('#eventuales').one('click',function() {
+	
+	var servicio = $('#servicio').val();	
+	var plantel = $('#plantelSheets').val();	
+	var mode = 'fetchEventuales';
+	var url = "https://script.google.com/macros/s/AKfycbzqO3v7GmY6xM2XuGVvqOH4R6WkKWXudToa6lzx-kVSzOQD4b8/exec?callback=fetchEventuales&mode=";
+	var request = jQuery.ajax({
+		crossDomain: true,
+		url: url + encodeURIComponent(mode)+'&plantel='+encodeURIComponent(plantel)+'&servicio='+encodeURIComponent(servicio),
+		method: "GET",
+		dataType: "jsonp"
+	});
+
+});
 
 	$('#2obj').click(function (e) {
 

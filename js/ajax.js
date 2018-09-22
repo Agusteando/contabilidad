@@ -1,4 +1,5 @@
 function build(data) {
+	
 	var categorias = Object.keys(data)
 	var conceptos = Object.values(data)
 	var arrayConceptos = [].concat.apply([], conceptos);
@@ -101,6 +102,28 @@ function build(data) {
 	});
 
 
+}
+
+function fetchEventuales(data) {
+	var data = data.result;
+	var salon = document.getElementById('eventuales');
+	
+	for (i=0; i<data.length; i++) {
+		var entry = data[i];
+			var container = document.createElement('label');
+			container.className = "bigBox";
+			var span = document.createElement('span');
+			span.className = "checkmark ss Masculino";
+			var box = document.createElement('input');
+			box.setAttribute("type", "checkbox");
+			container.innerHTML = entry[1];
+			box.value = entry[0];
+			container.appendChild(box);
+			container.appendChild(span);
+			
+			salon.appendChild(container);
+	}
+			
 }
 
 function tablaConceptos(data) {
@@ -210,7 +233,7 @@ function fetch() {
 }
 
 
-$('#containerTwo').on('change', 'input', function () {
+$('.eventuales').on('change', 'input', function () {
 	var obj = {};
 	var date = new Date();
 	var hora = date.toLocaleTimeString();

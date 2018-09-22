@@ -59,7 +59,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <div id="wrapper">
   <div id="sidebar-wrapper" class="ui-widget-shadow">
-    <ul class="sidebar-nav" style="position: fixed; margin-top: 50px;">
+    <ul class="sidebar-nav" style="">
       <li class="sidebar-brand">
 	  
 	  <button class="btn custom1" id="agregarContrato" style="margin-bottom: 5px; font-size: 20px; width: 100%; cursor:pointer;"><span class="glyphicon glyphicon-plus" style="float: left"></span>Nuevo contrato</button>
@@ -197,9 +197,17 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   </form>
              
 
-
+<div class="eventuales">
 			 <div id="salon" class="navbar"></div>
-				<div id="eventuales" style="width: 100vw; position: fixed; bottom: 0; right: 0;"><h2 style="float: left; width: 250px; color: white;">Eventuales: </h2></div>
+				<div id="eventuales" style="width: 100%; position: fixed; bottom: 0; right: 0;">
+				
+				<div class="btn-group" role="group" aria-label="Basic example" style="position: absolute; top: 0; right: 0; margin: 10px">
+				<button id="min" class="btn btn-secondary"><span class="glyphicon glyphicon-triangle-bottom"></span>Minimizar</button>
+				<button id="max" class="btn btn-secondary"><span class="glyphicon glyphicon-triangle-top"></span>Maximizar</button>
+				</div>
+				<h2 style="float: left; width: 250px; color: white;">Eventuales: </h2></div>
+				
+</div>
           </div>
         </div>
       </div>

@@ -2,6 +2,8 @@ $(document).ready(function () {
 
 /* 	document.getElementById("export-btn").disabled = true; */
 
+
+
 	$('#2obj').click(function (e) {
 
 		var data = JSON.parse($('#almacenamiento').val()); //Make it readable from input by an onload function

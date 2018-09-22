@@ -59,7 +59,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <div id="wrapper">
   <div id="sidebar-wrapper" class="ui-widget-shadow">
-    <ul class="sidebar-nav">
+    <ul class="sidebar-nav" style="position: fixed; margin-top: 50px;">
       <li class="sidebar-brand">
 	  
 	  <button class="btn custom1" id="agregarContrato" style="margin-bottom: 5px; font-size: 20px; width: 100%; cursor:pointer;"><span class="glyphicon glyphicon-plus" style="float: left"></span>Nuevo contrato</button>
@@ -102,7 +102,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	   	<h2 style="float: left; margin: 10px;"><?php if (isset($_GET['servicio'])) { echo $_GET['servicio']; } ?></h2> <input id="fechaHoy" type="date" value="<?php echo date('Y-m-d'); ?>" name="fecha" readonly="readonly">
 		<button id="2obj" class="btn custom1" style="font-size: 30px;">Guardar <p id="status"></p></button>
 		<input id="almacenamiento" type="text" hidden>
-		<input id="data" type="text" hidden>
+		<input id="data" type="text" placeholder="data">
 	   </div>
         <div class="row">
         <div class="col-md-12" id="contenido">
@@ -199,7 +199,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 
 			 <div id="salon" class="navbar"></div>
-
+				<div id="eventuales" style="width: 100vw; position: fixed; bottom: 0; right: 0;"><h2 style="float: left; width: 250px; color: white;">Eventuales: </h2></div>
           </div>
         </div>
       </div>

@@ -100,14 +100,7 @@ font-size: 15px;
 filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
 }
-#sidebar {
-	width: 50px;
-	height: 100vh;
-	background-color: #006fba;
-	box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-	float: left;
-	color: white;
-}
+
 #addHover {
 display: none;
 }
@@ -183,12 +176,8 @@ overflow: hidden;
 	min-width: 200px;
 	font-size: 18px;
 	margin: 10px;
-	font-family: 'Open Sans Condensed', sans-serif;
 	float: left;
 	cursor: pointer;
-}
-.nameLabel {
-
 }
 #wrapper {
   padding-left: 250px;
@@ -200,8 +189,8 @@ overflow: hidden;
   left: 250px;
   width: 250px;
   background-color: #006fba;
-  position: fixed;
-  height: 100%;
+  position: absolute;
+  height: 300vh;
   overflow-y: auto;
   font-family: Raleway,sans-serif;
   transition: all 0.4s ease 0s;
@@ -249,9 +238,9 @@ overflow: hidden;
 	max-width: 200px;
 	min-width: 200px;
 	height: 90px;
-
 	margin: 25px;
-	font-family: 'Open Sans Condensed', sans-serif;
+	font-family: Raleway,sans-serif;
+	font-weight: normal;
 	float: left;
 	cursor: pointer;
 }
@@ -350,4 +339,14 @@ float: left;
 fieldset p {
 clear: both;
 padding: 5px;
+}
+#eventuales {
+	background-color: #006fba;
+	overflow-y: auto;
+	color: white;
+	height: 50px;
+}
+#eventuales:hover {
+	transition: all 0.4s ease 0s;
+	 height: 150px;
 }

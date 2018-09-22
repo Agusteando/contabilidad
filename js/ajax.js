@@ -210,7 +210,7 @@ function fetch() {
 }
 
 
-$('#salon').on('change', 'input', function () {
+$('#containerTwo').on('change', 'input', function () {
 	var obj = {};
 	var date = new Date();
 	var hora = date.toLocaleTimeString();
@@ -483,7 +483,8 @@ $(document).ready(function ($) {
 
 		request.done(function (response, textStatus, jqXHR) {
 			// log a message to the console
-			$('#labelEventual').text('Se añadió un registro eventual');
+			$('#labelEventual').text('Creaste un alumno eventual ahora checalo después Guarda');
+			$form.trigger("reset");
 		});
 
 
@@ -498,10 +499,10 @@ $(document).ready(function ($) {
 
 		request.always(function (arr) {
 			// reenable the inputs
-			$inputs.val('');
-			var data = arr.data
 
-			var salon = document.getElementById('wrapper');
+			var data = arr.data
+			console.log(data);
+			var salon = document.getElementById('eventuales');
 
 			var container = document.createElement('label');
 			container.className = "bigBox";
@@ -513,6 +514,7 @@ $(document).ready(function ($) {
 			box.value = data[0];
 			container.appendChild(box);
 			container.appendChild(span);
+			
 			salon.appendChild(container);
 
 		});

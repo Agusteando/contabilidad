@@ -355,3 +355,17 @@ padding: 5px;
 #max {
 	cursor:pointer;
 }
+.context-btn {
+position: absolute;
+top: 0;
+right: 0;
+cursor: pointer;	
+}
+.context-btn:hover {
+color: red;	
+}
+.status {
+position: absolute;
+bottom: 0;
+right: 0;	
+}

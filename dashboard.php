@@ -23,6 +23,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/fonts.css">
 	<link rel="stylesheet" href="css/jquery.timepicker.min.css">
+	<link rel="stylesheet" href="css/jquery.contextMenu.min.css">
+	<link rel="stylesheet" href="css/all.min.css">
 
 
 
@@ -102,7 +104,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 	   	<h2 style="float: left; margin: 10px;"><?php if (isset($_GET['servicio'])) { echo $_GET['servicio']; } ?></h2> <input id="fechaHoy" type="date" value="<?php echo date('Y-m-d'); ?>" name="fecha" readonly="readonly">
 		<button id="2obj" class="btn custom1" style="font-size: 30px;">Guardar <p id="status"></p></button>
 		<input id="almacenamiento" type="text" hidden>
-		<input id="data" type="text" placeholder="data">
+		<input id="data" type="text" placeholder="data" hidden>
 	   </div>
         <div class="row">
         <div class="col-md-12" id="contenido">
@@ -195,7 +197,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
  
   <button id="export-btn" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
   </form>
-             
+      
 
 <div class="eventuales">
 			 <div id="salon" class="navbar"></div>
@@ -226,20 +228,25 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 </div>
 <input id="conceptos" type="text" hidden>
 <form id="2sheets" action="https://script.google.com/macros/s/AKfycbzqO3v7GmY6xM2XuGVvqOH4R6WkKWXudToa6lzx-kVSzOQD4b8/exec" method="post">
-<input id="contratosSheets" name="contratos" type="text" required>
-<input id="dataSheets" name="data" type="text" required value="0">
+<input id="contratosSheets" name="contratos" type="text" required hidden>
+<input id="dataSheets" name="data" type="text" required value="0" hidden>
 <input id="plantelSheets" name="plantel" type="text" required value="<?php if (isset($_GET['plantel'])) { echo $_GET['plantel']; }?>" hidden>
 </form>
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-ui.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.timepicker.min.js"></script>
+	<script src="js/jquery.contextMenu.js"></script>
+	<script src="js/jquery.ui.position.min.js"></script>
+	<script src="js/context.js"></script>
 	<script src="js/dashboard.js"></script>
 	<script src="js/ajax.js"></script>
 	<script src="js/tableEditable.js"></script>
 	<script src="js/submit2sheets.js"></script>
 	<script src="js/timepicker.js"></script>
-	<script src="js/jquery.timepicker.min.js"></script>
+
+
 
 
 

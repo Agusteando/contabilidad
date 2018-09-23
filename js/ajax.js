@@ -68,7 +68,7 @@ function build(data) {
 
 	var contratos = $('#contratosSheets').val();
 	var json = JSON.parse(contratos); //Make it readable from input by an onload function		
-	console.log(json);
+
 	var obj = {};
 	var obj2 = {};
 
@@ -113,11 +113,17 @@ function fetchEventuales(data) {
 			var container = document.createElement('label');
 			container.className = "bigBox";
 			var span = document.createElement('span');
-			span.className = "checkmark ss Masculino";
+			var context = document.createElement('span');
+			var estatus = document.createElement('span');
+			estatus.className = 'status';
+			context.className = 'glyphicon glyphicon-option-vertical context-btn';
+			span.className = "checkmark ss Masculino"; //Give it another one for eventuales justified by the lack of gender info
 			var box = document.createElement('input');
 			box.setAttribute("type", "checkbox");
 			container.innerHTML = entry[1];
 			box.value = entry[0];
+			span.appendChild(estatus);
+			span.appendChild(context);
 			container.appendChild(box);
 			container.appendChild(span);
 			
@@ -204,11 +210,17 @@ function fetch() {
 					var container = document.createElement('label');
 					container.className = "bigBox";
 					var span = document.createElement('span');
+					var context = document.createElement('span');
+					var estatus = document.createElement('i');
+					estatus.className = 'status ';
+					context.className = 'glyphicon glyphicon-option-vertical context-btn';
 					span.className = "checkmark ss " + data[i].genero;
 					var box = document.createElement('input');
 					box.setAttribute("type", "checkbox");
 					container.innerHTML = data[i].apellidoPaterno + " " + data[i].apellidoMaterno + " " + data[i].nombres;
 					box.value = data[i].id;
+					span.appendChild(estatus);
+					span.appendChild(context);
 					container.appendChild(box);
 					container.appendChild(span);
 					salon.appendChild(container);
@@ -331,7 +343,7 @@ $(document).ready(function ($) {
 			'plantel': plantel
 		},
 		success: function (response) {
-			console.log(response);
+
 			$('#almacenamiento').val(response);
 
 			var data = JSON.parse(response); //Make it readable from input by an onload function
